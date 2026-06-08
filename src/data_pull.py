@@ -56,19 +56,22 @@ def fetch_historical_espn(seasons: list[str]) -> pd.DataFrame:
         if r.status_code != 200:
             continue
         for event in r.json().get("events", []):
-            comp = event["competitions"][0]
-            home = next(c for c in comp["competitors"] if c["homeAway"] == "home")
-            away = next(c for c in comp["competitors"] if c["homeAway"] == "away")
-            home_score = int(home.get("score", 0) or 0)
-            away_score = int(away.get("score", 0) or 0)
-            rows.append({
-                "season": season,
-                "home_team": home["team"]["displayName"],
-                "away_team": away["team"]["displayName"],
-                "home_score": home_score,
-                "away_score": away_score,
-                "home_win": int(home_score > away_score),
-            })
+            try:
+                comp = event["competitions"][0]
+                home = next(c for c in comp["competitors"] if c["homeAway"] == "home")
+                away = next(c for c in comp["competitors"] if c["homeAway"] == "away")
+                home_score = int(home.get("score", 0) or 0)
+                away_score = int(away.get("score", 0) or 0)
+                rows.append({
+                    "season": season,
+                    "home_team": home["team"]["displayName"],
+                    "away_team": away["team"]["displayName"],
+                    "home_score": home_score,
+                    "away_score": away_score,
+                    "home_win": int(home_score > away_score),
+                })
+            except (KeyError, IndexError, StopIteration):
+                continue
     return pd.DataFrame(rows)
 
 
