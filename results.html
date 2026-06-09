@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 Premiership Rugby — Prediction Results</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #111; color: #f0f0f0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 2rem; }
+    h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .subtitle { color: #888; font-size: 0.95rem; margin-bottom: 2.5rem; }
+    .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+    .card { background: #1c1c1c; border-radius: 10px; padding: 1.2rem; text-align: center; border-top: 3px solid; }
+    .card.bath   { border-color: #004B8D; }
+    .card.exeter { border-color: #003974; }
+    .card.leics  { border-color: #00923F; }
+    .card.saints { border-color: #888; }
+    .card .team  { font-size: 0.85rem; color: #aaa; margin-bottom: 0.4rem; }
+    .card .pct   { font-size: 2rem; font-weight: 700; }
+    .semis { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem; }
+    .semi { background: #1c1c1c; border-radius: 10px; padding: 1.2rem; }
+    .semi h3 { font-size: 0.8rem; text-transform: uppercase; color: #888; margin-bottom: 0.8rem; letter-spacing: 0.05em; }
+    .matchup { display: flex; align-items: center; gap: 0.75rem; }
+    .team-name { font-weight: 600; font-size: 1rem; flex: 1; }
+    .prob { font-size: 1.5rem; font-weight: 700; }
+    .prob.fav { color: #4ade80; }
+    .prob.dog { color: #888; }
+    .vs { color: #555; font-size: 0.85rem; }
+    .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .chart-card { background: #1c1c1c; border-radius: 10px; padding: 1.2rem; }
+    .chart-card h3 { font-size: 0.8rem; text-transform: uppercase; color: #888; margin-bottom: 1rem; letter-spacing: 0.05em; }
+    .chart-card img { width: 100%; border-radius: 6px; }
+    .note { margin-top: 2rem; color: #555; font-size: 0.8rem; }
+    @media (max-width: 768px) {
+      .summary { grid-template-columns: 1fr 1fr; }
+      .semis, .charts { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <h1>2026 Premiership Rugby</h1>
+  <p class="subtitle">XGBoost + 10,000 Monte Carlo simulations &mdash; generated 2026-06-09</p>
+
+  <div class="summary">
+    <div class="card saints">
+      <div class="team">Northampton Saints</div>
+      <div class="pct">50.3%</div>
+    </div>
+    <div class="card leics">
+      <div class="team">Leicester Tigers</div>
+      <div class="pct">28.1%</div>
+    </div>
+    <div class="card bath">
+      <div class="team">Bath Rugby</div>
+      <div class="pct">19.1%</div>
+    </div>
+    <div class="card exeter">
+      <div class="team">Exeter Chiefs</div>
+      <div class="pct">2.5%</div>
+    </div>
+  </div>
+
+  <div class="semis">
+    <div class="semi">
+      <h3>Semi-Final 1</h3>
+      <div class="matchup">
+        <span class="team-name">Bath Rugby</span>
+        <span class="prob fav">90.6%</span>
+        <span class="vs">vs</span>
+        <span class="prob dog">9.4%</span>
+        <span class="team-name" style="text-align:right">Exeter Chiefs</span>
+      </div>
+    </div>
+    <div class="semi">
+      <h3>Semi-Final 2</h3>
+      <div class="matchup">
+        <span class="team-name">Leicester Tigers</span>
+        <span class="prob dog">35.0%</span>
+        <span class="vs">vs</span>
+        <span class="prob fav">65.0%</span>
+        <span class="team-name" style="text-align:right">Northampton Saints</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="charts">
+    <div class="chart-card">
+      <h3>Championship Win Probability</h3>
+      <img src="charts/championship_win_pct.png" alt="Championship win %">
+    </div>
+    <div class="chart-card">
+      <h3>Score Distribution — Semi 1</h3>
+      <img src="charts/scores_Bath_Rugby_v_Exeter_Chiefs.png" alt="Score distribution">
+    </div>
+    <div class="chart-card">
+      <h3>SHAP — Why Bath wins Semi 1</h3>
+      <img src="charts/shap_Bath_vs_Exeter_(Semi_1).png" alt="SHAP waterfall">
+    </div>
+    <div class="chart-card">
+      <h3>Twickenham Experience</h3>
+      <img src="charts/twickenham_heatmap.png" alt="Twickenham heatmap">
+    </div>
+  </div>
+
+  <p class="note">Model trained on 71 Gallagher Premiership matches (2020–25) via TheSportsDB. High CV accuracy (0.957) reflects small training set — treat probabilities as directional, not precise.</p>
+</body>
+</html>
