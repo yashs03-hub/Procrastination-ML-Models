@@ -155,38 +155,7 @@ Four notebooks, independently re-runnable:
 
 ---
 
-## 8. LinkedIn Post
-
-**Format:** Long-form LinkedIn article (not status update — better reach + indexed).
-
-**Structure:**
-```
-Hook
-"Bath are favourites. But by how much? I built an ML model to find out —
-here's what 10,000 simulations of the Premiership semis say."
-
-The method (3–4 lines, no jargon)
-- 5 seasons of Premiership data
-- XGBoost trained on set-piece, form, home advantage
-- Player-level Twickenham experience for the final
-
-The findings (bullet points + hero chart)
-- Championship win % for all 4 teams
-- Most likely final matchup
-- The one stat that swung it (SHAP insight)
-
-Closing hook
-"The model is wrong about something. It always is.
-But here's what it can't account for..."
-```
-
-**Visuals attached:** Championship win % bar chart (hero) + one SHAP waterfall. Two images maximum.
-
-**Notebook link:** Posted as first comment (not in body) to avoid LinkedIn algorithm suppression.
-
----
-
-## 9. Constraints & Risks
+## 8. Constraints & Risks
 
 | Risk | Mitigation |
 |---|---|
